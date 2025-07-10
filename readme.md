@@ -23,6 +23,8 @@ Este proyecto es una **API REST** de Peliculas con Mongoose y Express. Esta API 
     - [🎯 Operaciones CRUD Básicas](#-operaciones-crud-básicas)
     - [🔍 Endpoints de Filtrado](#-endpoints-de-filtrado)
     - [📊 Códigos de Respuesta HTTP](#-códigos-de-respuesta-http)
+  - [📊 Modelo de Datos](#-modelo-de-datos)
+    - [Ejemplo de película válida:](#ejemplo-de-película-válida)
 
 ---
 
@@ -142,5 +144,63 @@ Este proyecto es una **API REST** de Peliculas con Mongoose y Express. Esta API 
 
 > [!NOTE]  
 > Todos los endpoints devuelven JSON con la estructura: `{"data": [...], "message": "..."}` para respuestas exitosas y `{"error": "...", "status": number}` para errores.
+
+---
+
+## 📊 Modelo de Datos
+
+> [!NOTE]  
+> El esquema de datos está definido en `models/movie.js` usando **Mongoose**.
+
+<details>
+<summary><strong>🎬 Estructura del modelo Movie</strong></summary>
+
+```javascript
+{
+  title: {
+    type: String,
+    required: true          // ✅ Campo obligatorio
+  },
+  year: {
+    type: Number,
+    required: true          // ✅ Campo obligatorio
+  },
+  director: {
+    type: String,
+    required: true          // ✅ Campo obligatorio
+  },
+  duration: {
+    type: Number,
+    required: true          // ✅ Campo obligatorio (en minutos)
+  },
+  poster: {
+    type: String            // 🔗 URL del poster (opcional)
+  },
+  genre: {
+    type: [String],
+    required: true          // ✅ Array de géneros obligatorio
+  },
+  rate: {
+    type: Number,
+    required: false,
+    default: 5              // ⭐ Puntuación por defecto: 5
+  }
+}
+```
+
+### Ejemplo de película válida:
+```json
+{
+  "title": "The Dark Knight",
+  "year": 2008,
+  "director": "Christopher Nolan",
+  "duration": 152,
+  "poster": "https://example.com/poster.jpg",
+  "genre": ["Action", "Crime", "Drama"],
+  "rate": 9.0
+}
+```
+
+</details>
 
 ---
