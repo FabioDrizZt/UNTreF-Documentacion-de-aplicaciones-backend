@@ -25,6 +25,8 @@ Este proyecto es una **API REST** de Peliculas con Mongoose y Express. Esta API 
     - [📊 Códigos de Respuesta HTTP](#-códigos-de-respuesta-http)
   - [📊 Modelo de Datos](#-modelo-de-datos)
     - [Ejemplo de película válida:](#ejemplo-de-película-válida)
+  - [🏗️ Arquitectura del Proyecto](#️-arquitectura-del-proyecto)
+    - [📊 Diagrama de Arquitectura](#-diagrama-de-arquitectura)
 
 ---
 
@@ -202,5 +204,83 @@ Este proyecto es una **API REST** de Peliculas con Mongoose y Express. Esta API 
 ```
 
 </details>
+
+---
+
+## 🏗️ Arquitectura del Proyecto
+
+```plaintext
+24 - Arquitectura-con-Mongoose-y-Express/
+├── 📄 app.js                    # Punto de entrada principal
+├── 📄 api.http                  # Pruebas HTTP
+├── ⚙️  config/
+│   └── 📄 database.js           # Configuración de MongoDB
+├── 🎮 controllers/
+│   ├── 📄 movies.js             # Controladores síncronos
+│   └── 📄 moviesPromesas.js     # Controladores con promesas
+├── 📊 data/
+│   └── 📄 movies.json           # Datos de ejemplo
+├── 🏗️ models/
+│   └── 📄 movie.js              # Modelo de Mongoose
+├── 🛣️ routes/
+│   └── 📄 movies.js             # Definición de rutas
+├── 📋 package.json              # Dependencias y scripts
+└── 📚 readme.md                 # Documentación
+```
+
+> [!TIP]  
+> La estructura sigue el patrón **MVC** para mantener el código organizado y escalable.
+
+### 📊 Diagrama de Arquitectura
+
+```mermaid
+graph TD
+    A["👤 Cliente<br/>(Postman, Browser)"] --> B["🌐 Express Server<br/>Port 3000"]
+    
+    B --> C["🛣️ Router<br/>routes/movies.js"]
+    
+    C --> D["🎮 Controller<br/>controllers/moviesPromesas.js"]
+    
+    D --> E["🏗️ Model<br/>models/movie.js<br/>(Mongoose Schema)"]
+    
+    E --> F["🗃️ MongoDB<br/>Database"]
+    
+    F --> E
+    E --> D
+    D --> C
+    C --> B
+    B --> A
+    
+    G["⚙️ Database Config<br/>config/database.js"] --> E
+    
+    H["📊 Data Seed<br/>data/movies.json"] -.-> F
+    
+    subgraph "🔄 Operaciones CRUD"
+        I["📖 GET /peliculas<br/>Obtener todas"]
+        J["🔍 GET /peliculas/:id<br/>Obtener por ID"]
+        K["➕ POST /peliculas<br/>Crear nueva"]
+        L["✏️ PATCH /peliculas/:id<br/>Actualizar"]
+        M["🗑️ DELETE /peliculas/:id<br/>Eliminar"]
+    end
+    
+    C --> I
+    C --> J
+    C --> K
+    C --> L
+    C --> M
+    
+    subgraph "🔍 Filtros Avanzados"
+        N["🎭 GET /peliculas?genero=:genre<br/>Por género"]
+        O["🎬 GET /peliculas/director/:director<br/>Por director"]
+        P["⭐ GET /peliculas/rate/:rate<br/>Por puntuación"]
+    end
+    
+    C --> N
+    C --> O
+    C --> P
+```
+
+> [!NOTE]  
+> Este diagrama muestra el flujo completo de datos desde el cliente hasta la base de datos, pasando por todas las capas de la arquitectura MVC.
 
 ---
