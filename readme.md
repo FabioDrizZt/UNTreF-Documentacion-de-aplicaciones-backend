@@ -43,6 +43,9 @@ Este proyecto es una **API REST** de Peliculas con Mongoose y Express. Esta API 
 
 ---
 
+> [!NOTE]  
+> Esta API implementa un patrón **MVC** (Modelo-Vista-Controlador) para una mejor organización del código.
+
 ## ✨ Características
 
 - ✅ **CRUD Completo** para gestión de películas
