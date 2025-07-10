@@ -1,3 +1,5 @@
+![Banner Peliculas](https://cdn.pixabay.com/photo/2015/09/21/14/47/banner-949944_1280.jpg)
+
 # API de Peliculas con Mongoose y Express
 
 ## Descripción
