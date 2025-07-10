@@ -10,7 +10,7 @@ Este proyecto es una **API REST** de Peliculas con Mongoose y Express. Esta API 
 
 - [🎬 API de Películas con Mongoose y Express](#-api-de-películas-con-mongoose-y-express)
   - [📋 Tabla de Contenidos](#-tabla-de-contenidos)
-  - [✨ Características](#Características)
+  - [✨ Características](#-características)
   - [🚀 Instalación](#-instalación)
     - [1. Clonar el repositorio](#1-clonar-el-repositorio)
     - [2. Instalar dependencias](#2-instalar-dependencias)
@@ -43,7 +43,7 @@ Este proyecto es una **API REST** de Peliculas con Mongoose y Express. Esta API 
 
 ---
 
-## Características
+## ✨ Características
 
 - ✅ **CRUD Completo** para gestión de películas
 - 🔍 **Filtrado avanzado** por género, director y puntuación
